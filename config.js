@@ -1,6 +1,12 @@
 let fs = require('fs')
-global.owner = JSON.parse(fs.readFileSync('./src/owner.json')) // Put your number to folder /src/owner.json
-global.mods = JSON.parse(fs.readFileSync('./src/moderator.json')) // Want some help?
+
+let flaaa = JSON.parse(fs.readFileSync('./api/fla.json'))
+let waifu = JSON.parse(fs.readFileSync('./api/waifu.json'))
+let data = JSON.parse(fs.readFileSync('./data.json'))
+
+
+global.owner = JSON.parse(fs.readFileSync('./settings/owner.json')) // Put your number to folder /src/owner.json
+global.mods = JSON.parse(fs.readFileSync('./settings/moderator.json')) // Want some help?
 
 global.APIs = { // API Prefix
   // name: 'https://website'
@@ -15,7 +21,8 @@ global.APIs = { // API Prefix
   amel: 'https://melcanz.com',
   hardianto: 'https://hardianto.xyz',
   lol: 'https://api.lolhuman.xyz',
-  adicug: 'https://api.adiofficial.xyz'
+  adicug: 'https://api.adiofficial.xyz',
+  males: 'https://malest.herokuapp.com'
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
@@ -31,7 +38,6 @@ global.APIKeys = { // APIKey Here
   'https://api.adiofficial.xyz': 'apikey lu'
 }
 
-//global.wm = '𝑴𝒚𝑩𝒐𝒕-𝑴𝒖𝒍𝒕𝒊 𝑫𝒆𝒗𝒊𝒄𝒆 𝑩𝒚 𝑭𝒐𝒌𝒖𝒔𝑰𝑫'
 global.wait = '_*𝐬𝐞𝐝𝐚𝐧𝐠 𝐝𝐢 𝐩𝐫𝐨𝐬𝐞𝐬 ...*_'
 global.eror = '_*мααƒ ѕєяνєя тι∂αк ѕтαвιℓ..*_'
 
@@ -50,13 +56,15 @@ global.dikit = "dikit lagi, semangat ya :')"
 
 global.multiplier = 100 // The higher, The harder levelup
 
-//=========== Requirements ==========//
+// Sticker WM
+global.packname = data.namabot;
+global.author = data.owner;
 
-global.baileys = require('@adiwajshing/baileys')
-global.fs = require('fs')
-global.data = JSON.parse(fs.readFileSync('./data.json'))
-global.fetch = require('node-fetch')
-global.bochil = require('@bochilteam/scraper')
+//=========== Requirements ==========//  
+        global.colong1 = 'Ciss 📸'
+        global.colong2 = 'ʙy ᴀɢᴜᴢ ꜰᴀᴍɪʟɪᴀ'
+global.img = pickRandom(waifu)
+global.fla = pickRandom(flaaa)
 
 global.rpg = {
   emoticon(string) {
@@ -104,3 +112,7 @@ fs.watchFile(file, () => {
   delete require.cache[file]
   require(file)
 })
+
+function pickRandom(list) {
+  return list[Math.floor(list.length * Math.random())]
+}
